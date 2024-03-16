@@ -230,7 +230,7 @@ input {
       const downloadDebate = document.getElementById("downloadDebate");
       downloadDebate.addEventListener("click", () => {
         console.log("a");
-        fetch("https://chchairifthar24backend.onrender.com/api/download/debate", {
+        fetch("https://chifthar24fd.onrender.com/api/download/debate", {
           method: "GET",
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -264,7 +264,7 @@ input {
       announcementForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        fetch("https://ifthar24cu.onrender.com/api/anno", {
+        fetch("https://chifthar24fd.onrender.com/api/anno", {
           method: "POST",
           body: JSON.stringify({ value: formData.get("announcement") }),
           headers: {
@@ -284,7 +284,7 @@ input {
       notificationForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        fetch("https://ifthar24cu.onrender.com/api/noti", {
+        fetch("https://chifthar24fd.onrender.com/api/noti", {
           method: "POST",
           body: JSON.stringify({ value: formData.get("notification") }),
           headers: {
@@ -308,7 +308,7 @@ input {
 
       // Fetch data from the server
       function fetchAndCreateTable() {
-        fetch("https://ifthar24cu.onrender.com/api/admin2/register", {
+        fetch("https://chifthar24fd.onrender.com/api/admin2/register", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -382,7 +382,7 @@ input {
       fetchAndCreateTable();
 
       function togglePaymentStatus(id, status, eventName) {
-        fetch("https://ifthar24cu.onrender.com/api/admin2/togglepayment", {
+        fetch("https://chifthar24fd.onrender.com/api/admin2/togglepayment", {
           method: "POST",
           body: JSON.stringify({ id, status, eventName }),
           headers: {

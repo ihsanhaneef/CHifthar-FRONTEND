@@ -124,9 +124,9 @@
       <div class="container" style="background-color: aliceblue; margin-top: -3%;">
           <div class="row" id="mclientsRow" style="align-items: center; text-align: center; justify-content: center; width: 100%;">
             
-              <h1 class="mb-4" style="text-align: center; color: rgb(0, 0, 0);font-family:Arial, Helvetica, sans-serif; font-size: larger; padding-top: 2%;">IFTHAR'24 Notification !!! </h1>
+              <!-- <h1 class="mb-4" style="text-align: center; color: rgb(0, 0, 0);font-family:Arial, Helvetica, sans-serif; font-size: larger; padding-top: 2%;">IFTHAR'24 Notification !!! </h1> -->
           
-              <div class="notification-section" id="notification-container" style="padding-bottom: 30px;padding-top: -30px; ;">
+              <div class="notification-section" id="notification-container" style="padding-bottom: 30px;padding-top: -30px; align-items: center;justify-content: center;">
             
               </div>
             </div>
@@ -155,8 +155,7 @@
                       const nameDiv = document.createElement("div");
                       nameDiv.className = "notification-name";
                       nameDiv.innerHTML =
-                        "<strong style='color: red;'>Attention!: &nbsp &nbsp</strong> " +
-                        lastNotification.noti;
+                      "<strong style='color: red; font-size: x-large'>" + lastNotification.noti + "</strong>";
             
                       notiDiv.appendChild(nameDiv);
                       container.appendChild(notiDiv);

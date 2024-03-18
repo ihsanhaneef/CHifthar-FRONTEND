@@ -231,7 +231,8 @@ input {
       const downloadDebate = document.getElementById("downloadDebate");
       downloadDebate.addEventListener("click", () => {
         console.log("a");
-        fetch("https://chifthar24fd.onrender.com/api/download/debate", {
+        // fetch("https://chifthar24fd.onrender.com/api/download/debate", {
+        fetch("http://localhost:7003/api/download/debate", {
           method: "GET",
           headers: {
             Authorization: localStorage.getItem("token"),

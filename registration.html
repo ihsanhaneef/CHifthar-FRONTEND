@@ -510,36 +510,25 @@
 
 <body>
 
-  <!-- <script>
+  <script>
+    // Get the current date and time
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
 
+    // Define the allowed registration hours (5 am to 12 pm)
+    const registrationStartTime = 5; // 5 am
+    const registrationEndTime = 12; // 12 pm
 
-    let loginForm = document.getElementById("loginForm");
-
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      console.log("hello");
-
-    });
-
-    function makeApiCall() {
-      fetch('http://localhost:7000/api/technova/registration', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend),
-      })
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('result').innerText = JSON.stringify(data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+    // Check if the current time is within the allowed registration hours
+    if (currentHour >= registrationStartTime && currentHour <= registrationEndTime) {
+        // Registration is open, enable the form
+        document.getElementById("registrationForm").removeAttribute("disabled");
+    } else {
+        // Registration is closed, disable the form and display a message
+        document.getElementById("registrationForm").setAttribute("disabled", true);
+        document.getElementById("registrationMessage").innerText = "Registration is currently closed. Please try again during the allowed hours (5 am to 12 pm).";
     }
-  </script> -->
-
+</script>
 
 
 <!-- 

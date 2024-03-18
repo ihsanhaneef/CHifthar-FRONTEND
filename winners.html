@@ -117,56 +117,49 @@
     <div class="winners-container" id="winners-container">
         <!-- Winners will be dynamically added here -->
     </div>
-    
-    <script>
-        // Fetch data from your backend and dynamically populate the winners-container
-        // You can use JavaScript to make a fetch request to your server endpoint (e.g., /winners)
-        // and then dynamically create HTML elements for each winner.
-    
-        // Example fetch request using vanilla JavaScript:
-        const api = "https://chifthar24fd.onrender.com";
-    
-        fetch(api + "/api/winners/winners")
-            .then((res) => res.json())
-            .then((data) => {
-                const winnersContainer = document.getElementById('winners-container');
-    
-                // Function to create a winner element with a delay
-                const createWinnerWithDelay = (winner, index) => {
-                    setTimeout(() => {
-                        const winnerElement = document.createElement('div');
-                        winnerElement.classList.add('winner');
-    
-                        const imgElement = document.createElement('img');
-                        imgElement.src = winner.ImgUrl;
-                        imgElement.alt = 'Winner Image';
-    
-                        const eventNameElement = document.createElement('p');
-                        // eventNameElement.textContent = `${index + 1}. ${winner.eventname}`;
-                        eventNameElement.textContent = `${winner.eventname}`;
-    
-                        const teamNamesElement = document.createElement('ul');
-                        winner.team.forEach(team => {
-                            const teamNameItem = document.createElement('li');
-                            teamNameItem.textContent = `Name: ${team.name}`;
-                            teamNamesElement.appendChild(teamNameItem);
-                        });
-    
-                        winnerElement.appendChild(imgElement);
-                        winnerElement.appendChild(eventNameElement);
-                        winnerElement.appendChild(teamNamesElement);
-    
-                        winnersContainer.appendChild(winnerElement);
-                    }, index * 1000); // Adjust the delay (in milliseconds) as needed
-                };
-    
-                // Loop through the data and create elements with a delay
-                data.forEach((winner, index) => {
-                    createWinnerWithDelay(winner, index);
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    </script>
 
+    <script>
+    
+    fetch(api + "/api/winners/winners")
+    .then((res) => res.json())
+    .then((data) => {
+        const winnersContainer = document.getElementById('winners-container');
+
+        // Function to create a winner element with a delay
+        const createWinnerWithDelay = (winner, index) => {
+            setTimeout(() => {
+                const winnerElement = document.createElement('div');
+                winnerElement.classList.add('winner');
+
+                const imgElement = document.createElement('img');
+                imgElement.src = winner.ImgUrl;
+                imgElement.alt = 'Winner Image';
+
+                const eventNameElement = document.createElement('p');
+                eventNameElement.textContent = `${winner.eventname}`;
+
+                const teamNamesElement = document.createElement('ul');
+                winner.team.forEach(team => {
+                    const teamNameItem = document.createElement('li');
+                    teamNameItem.textContent = `Name: ${team.name}`;
+                    teamNamesElement.appendChild(teamNameItem);
+                });
+
+                winnerElement.appendChild(imgElement);
+                winnerElement.appendChild(eventNameElement);
+                winnerElement.appendChild(teamNamesElement);
+
+                // Prepend the new winner element to the beginning of the container
+                winnersContainer.prepend(winnerElement);
+            }, index * 1000); // Adjust the delay (in milliseconds) as needed
+        };
+
+        // Loop through the data in reverse order and create elements with a delay
+        for (let i = data.length - 1; i >= 0; i--) {
+            createWinnerWithDelay(data[i], data.length - 1 - i);
+        }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+    </script>
 </body>
 </html>

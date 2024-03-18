@@ -664,7 +664,7 @@
   var currentTime = new Date().getHours();
 
   // Check if the current time is not between 6am and 4pm
-  if (currentTime < 5 || currentTime >= 12) {
+  if (currentTime < 12 || currentTime >= 2) {
     // Redirect to another page
     window.location.href = "closed.html";
   }
@@ -708,7 +708,7 @@
       const dataToBackend = {
         email: email,
         username:username,
-        regid:"CH-IF  " + regid,
+        regid: parseInt(regid),
         gender:selectedValue,
         // collegename: selectedValue,
         // participants: dataArray
@@ -718,8 +718,8 @@
       let responseData;
       let responseStatus;
 
-      // fetch("http://localhost:7003/api/ifthar24/ifthar24", {
-      fetch("https://chifthar24fd.onrender.com/api/ifthar24/ifthar24", {
+      fetch("http://localhost:7003/api/ifthar24/ifthar24", {
+      // fetch("https://chifthar24fd.onrender.com/api/ifthar24/ifthar24", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -117,10 +117,12 @@
     <div class="winners-container" id="winners-container">
         <!-- Winners will be dynamically added here -->
     </div>
-
+    
     <script>
-    const api = "https://chifthar24fd.onrender.com";
-    fetch(api + "/api/winners/winners")
+       
+        const api = "https://chifthar24fd.onrender.com";
+    
+        fetch(api + "/api/winners/winners")
     .then((res) => res.json())
     .then((data) => {
         const winnersContainer = document.getElementById('winners-container');
@@ -149,17 +151,17 @@
                 winnerElement.appendChild(eventNameElement);
                 winnerElement.appendChild(teamNamesElement);
 
-                // Prepend the new winner element to the beginning of the container
-                winnersContainer.prepend(winnerElement);
-            }, index * 1000); // Adjust the delay (in milliseconds) as needed
+                winnersContainer.appendChild(winnerElement);
+            }, (data.length - index - 1) * 1000); // Adjust the delay (in milliseconds) as needed
         };
 
         // Loop through the data in reverse order and create elements with a delay
         for (let i = data.length - 1; i >= 0; i--) {
-            createWinnerWithDelay(data[i], data.length - 1 - i);
+            createWinnerWithDelay(data[i], i);
         }
     })
     .catch(error => console.error('Error fetching data:', error));
     </script>
+
 </body>
 </html>

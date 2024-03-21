@@ -198,11 +198,11 @@ input {
     <!-- debate -->
     <section id="debate" style="padding-top: 50px;">
       <h2 id="heading">IFTHAR 24</h2>
-      <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for name or registration ID..">
+      <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for name or registration ID.." style="color: white;">
       <table border="1" align="center" style="width: 100%" id="debateTable">
         <thead>
           <tr>
-            <th>Email</th>
+            <!-- <th>Email</th> -->
             <th>GENDER</th>
             <th>NAME</th>
             <th>REG ID</th>
@@ -267,8 +267,8 @@ function searchTable() {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    tdName = tr[i].getElementsByTagName("td")[2]; // Column index 2 for NAME
-    tdRegID = tr[i].getElementsByTagName("td")[3]; // Column index 3 for REG ID
+    tdName = tr[i].getElementsByTagName("td")[1]; // Column index 2 for NAME
+    tdRegID = tr[i].getElementsByTagName("td")[2]; // Column index 3 for REG ID
     if (tdName || tdRegID) {
       txtValueName = tdName.textContent || tdName.innerText;
       txtValueRegID = tdRegID.textContent || tdRegID.innerText;
@@ -361,9 +361,9 @@ function searchTable() {
 
               const row = document.createElement("tr");
 
-              const emailCell = document.createElement("td");
-              emailCell.textContent = entry.email;
-              row.appendChild(emailCell);
+              // const emailCell = document.createElement("td");
+              // emailCell.textContent = entry.email;
+              // row.appendChild(emailCell);
 
               const genderCell = document.createElement("td");
               genderCell.textContent = entry?.gender;

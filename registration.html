@@ -532,22 +532,17 @@
                                       <div class="col-md-6">
                                           <div class="form-group" style="padding-top: 30px;" >
                                               <input type="number" id="regid" class="form-control" placeholder="REG ID">
-                                              Kindly ensure your REGISTRATION NUMBER <br/> <a href="https://drive.google.com/file/d/12Dt_uTcSG91Yh27Kx6fmW0LRyg6rYyLR/view?usp=drive_link"><b>click here for Registration Number</b></a>
+                                              Kindly ensure your REGISTRATION NUMBER <br/> <a href="https://drive.google.com/file/d/12Dt_uTcSG91Yh27Kx6fmW0LRyg6rYyLR/view?usp=drive_link" target="_blank"><b>click here for Registration Number</b></a>
                                           </div>
                                       </div>
                                       <div class="col-md-6">
                                         <div class="form-group" style="padding-top: 30px;">
-                                            <input type="email" id="email" class="form-control" placeholder="Email">
-                                        </div>
+                                          <input type="text" id="username" class="form-control" placeholder="NAME">
+                                      </div>
                                   </div>
 
                                   <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group" style="padding-top: 30px;">
-                                            <input type="text" id="username" class="form-control" placeholder="NAME">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6" style="padding-top: 30px;">
                                       <select name="" id="gender" class="form-control">
                                         <option value="" disabled selected>Gender</option>
                                         <option value="MALE">MALE</option>
@@ -555,6 +550,14 @@
     
                                       </select>
                                     </div>
+                                    <!-- <div class="col-md-6" style="padding-top: 30px;">
+                                      <select name="" id="gender" class="form-control">
+                                        <option value="" disabled selected>Gender</option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+    
+                                      </select>
+                                    </div> -->
                                 </div>
                                       
                               
@@ -660,17 +663,15 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    
-  // Get the current time
-  var currentTime = new Date().getHours();
-
-  // Check if the current time is not between 6am and 4pm
-  if (currentTime < 4 || currentTime >= 12) {
-    // Redirect to another page
-    window.location.href = "closed.html";
-  }
-
-</script>
+    // Get the current time
+    var currentTime = new Date().getHours();
+  
+    // Check if the current time is not between 6am and 1pm
+    if (currentTime < 6 || currentTime >= 13) {
+      // Redirect to another page
+      window.location.href = "closed.html";
+    }
+  </script>
   
   <script>
 
@@ -683,12 +684,10 @@
       const selectedOption = selectElement.options[selectElement.selectedIndex];
       const selectedValue = selectedOption.value;
 
-      let email = document.getElementById("email").value;
+      // let email = document.getElementById("email").value;
       let username = document.getElementById("username").value;
       let regid = document.getElementById("regid").value;
-      // let partci1 = document.getElementById("partci1").value;
     
-      // let partci1Phone = document.getElementById("partci1Phone").value;
    
 
       let dataArray = [];
@@ -707,7 +706,7 @@
 
 
       const dataToBackend = {
-        email: email,
+        // email: email,
         username:username,
         regid: parseInt(regid),
         gender:selectedValue,
@@ -719,8 +718,8 @@
       let responseData;
       let responseStatus;
 
-      // fetch("http://localhost:7003/api/ifthar24/ifthar24", {
-      fetch("https://chifthar24fd.onrender.com/api/ifthar24/ifthar24", {
+      fetch("http://localhost:7003/api/ifthar24/ifthar24", {
+      // fetch("https://chifthar24fd.onrender.com/api/ifthar24/ifthar24", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

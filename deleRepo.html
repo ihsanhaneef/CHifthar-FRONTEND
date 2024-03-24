@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Table</title>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+  
+      /* Header styles */
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+      }
+  
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        color: black;
+      }
+  
+      nav ul li {
+        display: inline;
+        margin-right: 20px;
+        color: black;
+      }
+  
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        color: black;
+      }
+  
+      /* Main content styles */
+      main {
+        padding: 20px;
+      }
+  
+      section {
+        margin-bottom: 40px;
+      }
+  
+      h2 {
+        margin-bottom: 10px;
+        background-color: black;
+        font-size: x-large;
+        color: white;
+        padding: 20px;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+  
+      th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        
+      }
+  
+      th {
+        background-color: #ccd3eb;
+      }
+      tr{
+        text-align: center;
+      }
+      button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  /* margin: auto;
+    display: block; */
+  
+}
+
+button:hover {
+  background-color: #74b978;
+}
+
+button:active {
+  background-color: red;
+}
+input {
+  background-color: #26ceb2; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#topButton {
+  display: block; /* Hide the button by default */
+  position: fixed; /* Fixed position to keep it in the viewport */
+  bottom: 30px; /* Adjust the distance from the bottom */
+  right: 30px; /* Adjust the distance from the right */
+  z-index: 99; /* Ensure it appears above other elements */
+  background-color: #008CBA; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 10%; /* Make it a circle */
+  padding: 15px; /* Adjust padding */
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer; /* Change cursor to pointer */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+  transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+#topButton:hover {
+  background-color: #005f79; /* Button color on hover */
+}
+
+
+
+    </style>
+    </head>
+    <header>
+        <header id="header" class="fixed-top d-flex align-items-center">
+            <div class="container">
+              <div class="header-container d-flex align-items-center justify-content-between">
+                <div class="logo">
+                  <h1 class="text-light"><a href="index.html" style="color: white;"><span>CH CHAIR IFTHAR'24</span></a></h1>
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                </div>
+        
+                <nav id="navbar" class="navbar">
+                  <ul>
+                    <li><a class="nav-link scrollto active" href="index.html" style="color: white;"> Home</a></li>
+                   
+        
+                    <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
+                    <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
+                      <!-- <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                          <ul>
+                            <li><a href="#">Deep Drop Down 1</a></li>
+                            <li><a href="#">Deep Drop Down 2</a></li>
+                            <li><a href="#">Deep Drop Down 3</a></li>
+                            <li><a href="#">Deep Drop Down 4</a></li>
+                            <li><a href="#">Deep Drop Down 5</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Drop Down 2</a></li>
+                        <li><a href="#">Drop Down 3</a></li>
+                        <li><a href="#">Drop Down 4</a></li>
+                      </ul> -->
+                    </li>
+                   
+                    <li><a class="getstarted scrollto" href="registration.html" style="color: white;">IFTHAR REGISTRATION</a></li>
+                  </ul>
+                  <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+        
+              </div><!-- End Header Container -->
+            </div>
+          </header><!-- End Header -->
+    </header>
+<!-- HTML code for the button -->
+<body><h1>make sure ifthar data is deleted before delete DataBase </h1>
+    <button onclick="deleteDebate(debateId)">Delete Debate</button>
+
+
+<script>// JavaScript code to send deletion request
+    function deleteDebate(debateId) {
+        fetch(`https://chifthar24fd.onrender.com/api/download/debate/debates/${debateId}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                // Debate deleted successfully
+                console.log('Debate deleted');
+            } else {
+                // Error occurred
+                console.error('Failed to delete debate');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting debate:', error);
+        });
+    }
+    </script>
+</body>
+</html>
